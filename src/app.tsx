@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { MemeResponse } from "../types"
 
 export default function App() {
     const [url, setUrl] = useState("")
@@ -6,7 +7,7 @@ export default function App() {
     useEffect(() => {
         async function getData() {
             const response = await fetch("https://meme-api.com/gimme")
-            const data = await response.json()
+            const data: MemeResponse = await response.json()
             setUrl(data.url)
         }
         getData()
@@ -14,7 +15,7 @@ export default function App() {
 
     return (
         <>
-            <h2 className="text-red-500">Hello from React!</h2>
+            <h2 className="text-red-500 text-4xl">Hello from React!</h2>
             <img src={url} alt="meme" />
         </>
     )
