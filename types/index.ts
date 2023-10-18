@@ -9,3 +9,8 @@ export type MemeResponse = {
 	ups: number;
 	preview: string[];
 };
+
+export type MultipleMemeResponse = {
+	memes: MemeResponse[];
+	count: number;
+};
