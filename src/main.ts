@@ -14,11 +14,15 @@ const createWindow = () => {
 		center: true,
 		darkTheme: true,
 		fullscreenable: true,
+		trafficLightPosition: {
+			x: 10,
+			y: 10,
+		},
 		webPreferences: {
-			preload: path.join(__dirname, "preload.js"),
+			preload: path.join(__dirname, 'preload.js'),
 			devTools: false,
 		},
-		icon: path.join(__dirname, "/favicon.ico"),
+		icon: path.join(__dirname, '/favicon.ico'),
 	});
 
 	// and load the index.html of the app.

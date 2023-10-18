@@ -626,6 +626,11 @@
     "@types/node" "*"
     "@types/responselike" "^1.0.0"
 
+"@types/dom-view-transitions@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/dom-view-transitions/-/dom-view-transitions-1.0.3.tgz#d69fd4512de1c2aa8e01321d5e734b7e447a097c"
+  integrity sha512-1X/BUVdo9pKho8SFWVNcIz0fasBAqwcAvWGMt0Z57LUN68I4AtdrgTUXFryZW/OHUSO+9OH9KtSgCTMrzOZdRg==
+
 "@types/fs-extra@^9.0.1":
   version "9.0.13"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.13.tgz#7594fbae04fe7f1918ce8b3d213f74ff44ac1f45"

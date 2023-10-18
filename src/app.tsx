@@ -20,31 +20,33 @@ export default function App() {
 	}
 
 	function addToSendList(item: MemeResponse, index: number) {
-		setSendList((curr) => [...curr, item]);
-		setMemes((curr) => {
-			const newMemes = [...curr];
-			newMemes.splice(index, 1);
-			return newMemes;
-		});
+		document.startViewTransition(() => {
+			setSendList((curr) => [...curr, item]);
+			setMemes((curr) => {
+				const newMemes = [...curr];
+				newMemes.splice(index, 1);
+				return newMemes;
+			});
+		})
 	}
 
 	return (
-		<div className="flex flex-col items-center transition-all ease-linear duration-1000 my-2">
+		<div className="flex flex-col items-center transition-all ease-in-out duration-1000 my-2">
 			<button
 				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
 				onClick={fetchNewMemes}
 			>
 				Fetch New Memes
 			</button>
-			<h2 className="text-red-500 text-4xl mt-4">Possible Options</h2>
+			<h2 className="text-red-500 text-4xl mt-4">Possibilities Are Endless</h2>
 			<br />
-			<div className="flex gap-4">
-				{memes?.length === 0 && <h1 className="text-4xl">No more memes</h1>}
+			<div className="grid grid-flow-row grid-cols-4 gap-4">
+				{memes?.length === 0 && <h1 className="text-4xl text-center align-middle">No more memes</h1>}
 				{memes?.map((item, index) => {
 					return (
 						<div key={index}>
 							<img
-								className={`ease-in-out transition-all hover:duration-700 w-60 h-60 hover:scale-[2] ${
+								className={`ease-in-out transition-all hover:duration-700 w-60 h-60 hover:scale-[1.75] ${
 									index === 0
 										? "hover:origin-top-left"
 										: index === memes.length - 1
@@ -61,12 +63,16 @@ export default function App() {
 			</div>
 			<h2 className="text-red-500 text-4xl mt-4">Will Be Sent</h2>
 			<br />
-			<div className="flex gap-4">
+			<div className="grid grid-flow-row grid-cols-4 gap-4">
 				{sendList?.map((item, index) => {
 					return (
 						<div key={index}>
 							<img
-								className="ease-in-out transition-all duration-700 w-60 h-60 hover:scale-[2] hover:origin-top"
+								className={`ease-in-out transition-all duration-700 w-60 h-60 hover:scale-150
+									${index === 0 && sendList.length > 1 ? "hover:origin-top-left" :
+										index === memes.length - 1
+											? "hover:origin-top-right" : "hover:origin-top"
+									}`}
 								src={item.url}
 								alt="meme"
 							/>
